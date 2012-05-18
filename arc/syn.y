@@ -12,6 +12,20 @@
 %{
 #include "rc.h"
 #include "fns.h"
+/*adapted from futharc*/
+void
+rchistory(tree* t);
+int
+hcompile(tree *t)
+{
+	int i;
+
+	if(i = compile(t))
+		rchistory(t);
+	return !i;
+}
+
+
 %}
 %union{
 	struct tree *tree;
@@ -22,7 +36,7 @@
 %type<tree> WORD REDIR DUP PIPE
 %%
 rc:				{ return 1;}
-|	line '\n'		{return !compile($1);}
+|	line '\n'		{return hcompile($1);}
 line:	cmd
 |	cmdsa line		{$$=tree2(';', $1, $2);}
 body:	cmd

@@ -16,6 +16,7 @@ COMMONOFILES=\
 	trap.$O\
 	tree.$O\
 	var.$O\
+	history.$O\
 	havefork.$O\
 
 PLAN9OFILES=plan9.$O\
