@@ -1,6 +1,6 @@
 </$objtype/mkfile
 
-TARG=rc
+TARG=arc
 COMMONOFILES=\
 	code.$O\
 	exec.$O\
