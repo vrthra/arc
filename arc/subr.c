@@ -27,7 +27,7 @@ extern int lastword, lastdol;
 void
 yyerror(char *m)
 {
-	pfmt(err, "rc: ");
+	pfmt(err, "arc: ");
 	if(runq->cmdfile && !runq->iflag)
 		pfmt(err, "%s:%d: ", runq->cmdfile, runq->lineno);
 	else if(runq->cmdfile)
@@ -69,7 +69,7 @@ inttoascii(char *s, long n)
 void
 panic(char *s, int n)
 {
-	pfmt(err, "rc: ");
+	pfmt(err, "arc: ");
 	pfmt(err, s, n);
 	pchr(err, '\n');
 	flush(err);

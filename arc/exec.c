@@ -924,7 +924,7 @@ void
 Xerror(char *s)
 {
 	if(strcmp(argv0, "rc")==0 || strcmp(argv0, "/bin/rc")==0)
-		pfmt(err, "arc: %s: %r\n", s);
+		pfmt(err, "aarc: %s: %r\n", s);
 	else
 		pfmt(err, "arc (%s): %s: %r\n", argv0, s);
 	flush(err);
@@ -936,7 +936,7 @@ void
 Xerror1(char *s)
 {
 	if(strcmp(argv0, "rc")==0 || strcmp(argv0, "/bin/rc")==0)
-		pfmt(err, "arc: %s\n", s);
+		pfmt(err, "aarc: %s\n", s);
 	else
 		pfmt(err, "arc (%s): %s\n", argv0, s);
 	flush(err);

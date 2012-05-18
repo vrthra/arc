@@ -91,7 +91,7 @@ execnewpgrp(void)
 		return;
 	}
 	if(rfork(arg)==-1){
-		pfmt(err, "rc: %s failed\n", runq->argv->words->word);
+		pfmt(err, "arc: %s failed\n", runq->argv->words->word);
 		setstatus("rfork failed");
 	}
 	else
@@ -110,7 +110,7 @@ Vinit(void)
 
 	dir = open("/env", OREAD);
 	if(dir<0){
-		pfmt(err, "rc: can't open /env: %r\n");
+		pfmt(err, "arc: can't open /env: %r\n");
 		return;
 	}
 	ent = nil;
@@ -203,7 +203,7 @@ execfinit(void)
 	Xpopm();
 	envdir = open("/env", 0);
 	if(envdir<0){
-		pfmt(err, "rc: can't open /env: %r\n");
+		pfmt(err, "arc: can't open /env: %r\n");
 		return;
 	}
 	start(rdfns, 1, runq->local);
@@ -260,7 +260,7 @@ addenv(var *v)
 		v->changed = 0;
 		snprint(envname, sizeof envname, "/env/%s", v->name);
 		if((f = Creat(envname))<0)
-			pfmt(err, "rc: can't open %s: %r\n", envname);
+			pfmt(err, "arc: can't open %s: %r\n", envname);
 		else{
 			for(w = v->val;w;w = w->next)
 				write(f, w->word, strlen(w->word)+1L);
@@ -271,7 +271,7 @@ addenv(var *v)
 		v->fnchanged = 0;
 		snprint(envname, sizeof envname, "/env/fn#%s", v->name);
 		if((f = Creat(envname))<0)
-			pfmt(err, "rc: can't open %s: %r\n", envname);
+			pfmt(err, "arc: can't open %s: %r\n", envname);
 		else{
 			if(v->fn){
 				fd = openfd(f);
@@ -489,7 +489,7 @@ notifyf(void*, char *s)
 		if(strncmp(s, "sys: ", 5)!=0) interrupted = 1;
 		goto Out;
 	}
-	pfmt(err, "rc: note: %s\n", s);
+	pfmt(err, "arc: note: %s\n", s);
 	noted(NDFLT);
 	return;
 Out:
@@ -498,7 +498,7 @@ Out:
 		ntrap++;
 	}
 	if(ntrap>=32){	/* rc is probably in a trap loop */
-		pfmt(err, "rc: Too many traps (trap %s), aborting\n", s);
+		pfmt(err, "arc: Too many traps (trap %s), aborting\n", s);
 		abort();
 	}
 	noted(NCONT);
